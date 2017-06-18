@@ -65,49 +65,50 @@
         <div class="detailed">
             <a href="#">⬇显示全部品牌</a>
         </div>
-    </body>
     
-    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-        /*******方法一,用if语句判断*******/
-        $(document).ready(function(){
-            //隐藏第七条开始的项目,最后一条”其他“除外
-            var $hideList = $("div.simplified ul li:gt(5):not(:last)");
-            $hideList.hide()  
+    
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            /*******方法一,用if语句判断*******/
+            $(document).ready(function(){
+                //隐藏第七条开始的项目,最后一条”其他“除外
+                var $hideList = $("div.simplified ul li:gt(5):not(:last)");
+                $hideList.hide()  
 
-            //精简显示和全部显示的切换按钮
-            var $toggle = $("div.detailed a");
-            var $highlight = $("div.simplified ul li a")
-            $toggle.click(function(){
-                if($hideList.is(":hidden")){  //当所选元素为隐藏状态时
-                    $hideList.show();         
-                    $(this).text("⬆显示部分品牌");  //”显示全部品牌“变为”显示部分品牌“
-                    $highlight.filter(":contains('佳能'),:contains('尼康'),:contains('奥林巴斯')")
-                    .addClass("highlight");
-                }
-                else{
-                    $hideList.hide();         
-                    $(this).text("⬇显示全部品牌"); 
-                    $highlight.removeClass("highlight")
-                }
-                return false;  //阻止页面超链接跳转
-            });          
-        });
-        
+                //精简显示和全部显示的切换按钮
+                var $toggle = $("div.detailed a");
+                var $highlight = $("div.simplified ul li a")
+                $toggle.click(function(){
+                    if($hideList.is(":hidden")){  //当所选元素为隐藏状态时
+                        $hideList.show();         
+                        $(this).text("⬆显示部分品牌");  //”显示全部品牌“变为”显示部分品牌“
+                        $highlight.filter(":contains('佳能'),:contains('尼康'),:contains('奥林巴斯')")
+                        .addClass("highlight");
+                    }
+                    else{
+                        $hideList.hide();         
+                        $(this).text("⬇显示全部品牌"); 
+                        $highlight.removeClass("highlight")
+                    }
+                    return false;  //阻止页面超链接跳转
+                });          
+            });
+            
 
-        /*******方法二，直接用toggle方法*******/
-        /**
-        $(function(){
-            //省略前面相同代码
+            /*******方法二，直接用toggle方法*******/
+            /**
+            $(function(){
+                //省略前面相同代码
 
-            //toggle方法会交替处理内部函数操作
-            $toggle.toggle(function(){
-                //显示
-            },function(){
-                //隐藏
-            });   
-        });
-        */
-    </script>
+                //toggle方法会交替处理内部函数操作
+                $toggle.toggle(function(){
+                    //显示
+                },function(){
+                    //隐藏
+                });   
+            });
+            */
+        </script>
+    </body>
 </html>
 
