@@ -10,7 +10,7 @@ function detailedPicTip(ele){
     //获取窗口的宽度
     let winWidth = $(window).width;
     //获取图片水平方向位置
-    let picLeft = $(this).offset().left;
+    //let picLeft = $(this).offset().left;
 
     $(ele).mouseover(function(e){
         //去除a标签自带的提示
@@ -19,22 +19,45 @@ function detailedPicTip(ele){
         var imgName = this.curTitle? this.curTitle:"";
 
         //当鼠标移入时，创建一个div提示块
-        var divTip = "<div id='divTip'><img src='" + this.href + "' alt='大图显示' width='900' height='600' />" + "<br/>" + imgName + "</div>";
+        var divTip = "<div id='divTip'><img src='" + this.href + "' alt='大图显示' width='900' height='600' />" + "<br/>" + imgName + e.pageX + "</div>";
         $("body").append(divTip);
         //设置div块的位置
-        $("#divTip").css({
-            "top": e.pageY + x + "px",
-            "left": e.pageX + y + "px"
-        }).show();
+        if(e.pageX + x + 940 <= winWidth){
+            $("#divTip").css({
+            "top": e.pageY + y + "px",
+            "left": e.pageX + x + "px"
+            }).show();
+        }
+        else{
+            $("#divTip").css({
+                "top": e.pageY + y + "px",
+                "left": winWidth - 940 + "px"
+            }).show();
+        }
+    
+        
     }).mouseout(function(){
         //鼠标移出后将值重新赋值给title，当下次鼠标移入时，就又能使用该值了
         this.title = this.curTitle;
         $("#divTip").remove();
     }).mousemove(function(e){
         //鼠标移动时，提示块也会跟随移动
-        $("#divTip").css({
+        /*$("#divTip").css({
             "top": e.pageY + x + "px",
             "left": e.pageX + y + "px"
-        });
+        });*/
+        if(e.pageX + x + 940 <= winWidth){
+            $("#divTip").css({
+            "top": e.pageY + y + "px",
+            "left": e.pageX + x + "px"
+            });
+        }
+        else{
+            $("#divTip").css({
+                "top": e.pageY + y + "px",
+                "left": winWidth - 940 + "px"
+            });
+        }
+
     });
 }
