@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>图片浮出层</title>
+        <style>
+            body {
+                clear: both;
+            }
+
+            ul li {
+                list-style: none;
+                float: left;
+                margin-right: 100px;
+            }
+
+            #divTip {
+                float: left;
+                font-size: 14px;
+                text-align: center;
+                color: #444;
+                padding: 10px 10px 6px 10px;
+                border: 1px solid #e9e9e9;
+                border-radius: 4px;
+                background-color: #eee;
+                box-shadow: 1px 1px 3px #e9e9e9;
+                position: absolute;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li><a href="pic/IMG_0017.JPG" class="tip" title="明亮"><img src="pic/IMG_0017.JPG" alt="明亮" width="300" height="200"/></a></li>
+            <li><a href="pic/IMG_0157.JPG" class="tip" title="浓郁"><img src="pic/IMG_0157.JPG" alt="浓郁" width="300" height="200"/></a></li>
+            <li><a href="pic/IMG_0363.JPG" class="tip" title="活泼"><img src="pic/IMG_0363.JPG" alt="活泼" width="300" height="200"/></a></li>
+        </ul>
+       
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/pictip.js"></script>
+        <script> 
+            jQuery(function($){
+                $(function(){
+                    detailedPicTip("a.tip");
+                })
+            })
+        </script>
+    </body>
+</html>
