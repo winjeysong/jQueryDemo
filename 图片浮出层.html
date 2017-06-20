@@ -4,14 +4,16 @@
         <meta charset="utf-8">
         <title>图片浮出层</title>
         <style>
-            body {
-                clear: both;
+
+            ul {
+                width: 1200px;
+                margin: auto;
             }
 
             ul li {
                 list-style: none;
                 float: left;
-                margin-right: 100px;
+                margin: 30px;
             }
 
             #divTip {
@@ -41,6 +43,7 @@
         <script src="js/pictip.js"></script>
         <script> 
             jQuery(function($){
+                //调用pictip.js中的函数
                 $(function(){
                     detailedPicTip("a.tip");
                 })
