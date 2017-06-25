@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>动画示例</title>
+        <style>
+            #div1, #div2 {
+                width: 200px;
+                height: 200px;
+                text-align: center;
+                line-height: 200px;
+                position: relative;
+                cursor: pointer;
+                margin: 30px;
+            }
+
+            #div1 {
+                background-color: #c9e;
+            }
+
+            #div2 {
+                background-color: #ddc;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">同时进行两个动画</div>
+        <div id="div2">按顺序先后进行两个动画</div>
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                //给div1添加点击事件，点击后会同时执行多个动画效果
+                $("#div1").click(function(){
+                    $(this).animate({left: "600px", width:"300px", height: "300px", lineHeight:"300px"},"slow");
+                });
+
+                //给div2添加点击事件，点击后会按先后顺序执行多个动画效果
+                $("#div2").click(function(){
+                    $(this).animate({left: "600px"},"slow")
+                    .animate({width:"300px"},"slow")
+                    .animate({height: "300px"},"slow")
+                    .animate({lineHeight:"300px"},"slow");
+                });
+            });        
+        </script>
+    </body>
+</html>
