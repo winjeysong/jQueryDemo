@@ -60,6 +60,9 @@
                 cursor: pointer;
             }
             
+            span.cur_page {
+                color: #f91;
+            }
         </style>
     </head>
 
@@ -68,9 +71,7 @@
             <!--顶部标题部分-->
             <div class="head">
                 <h3>视频精选</h3>
-                <div class="tip">
-                    <span class="cur_page">·</span><span>·</span><span>·</span><span>·</span>
-                </div>
+                <div class="tip"></div>
                 <div class="page_change">
                     <span class="prev">〈 </span>
                     <span class="next"> 〉</span>
@@ -137,7 +138,12 @@
         <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/rolling_left_right.js"></script>
         <script>
-            Rolling.rollingRight();
+        jQuery(function($){
+            $(function(){
+                Rolling.dotTip("<span>·</span>");
+                Rolling.rollingRight();
+            });
+        });     
         </script>
     </body>
 </html>
