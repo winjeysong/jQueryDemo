@@ -9,7 +9,7 @@
                 padding: 0
             }
             div.wrap {
-                width: 1096px;
+                width: 1080px;
                 height: 311px;
                 margin: 50px auto;
                 overflow: hidden;
@@ -43,7 +43,7 @@
             }
 
             div.inner_content {
-                
+                position: relative;
                 
             }
 
@@ -52,8 +52,12 @@
             }
 
             ul.list li{
-                display: inline-block;
+                float: left;
                 margin: 15px;
+            }
+
+            span.prev, span.next {
+                cursor: pointer;
             }
             
         </style>
@@ -79,35 +83,51 @@
                 <div class="inner_content">
                     <ul class="list">
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题1</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题2</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题3</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题4</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题5</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题6</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题7</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                         <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
-                            <div class="title"><a href="#">视频标题</a></div>
+                            <div class="title"><a href="#">视频标题8</a></div>
+                            <div class="click"><span>点击量：<em>88888</em></span></div>
+                        </li>
+                        <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
+                            <div class="title"><a href="#">视频标题9</a></div>
+                            <div class="click"><span>点击量：<em>88888</em></span></div>
+                        </li>
+                        <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
+                            <div class="title"><a href="#">视频标题10</a></div>
+                            <div class="click"><span>点击量：<em>88888</em></span></div>
+                        </li>
+                        <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
+                            <div class="title"><a href="#">视频标题11</a></div>
+                            <div class="click"><span>点击量：<em>88888</em></span></div>
+                        </li>
+                        <li><a href="#" title="示例图片"><img src="pic/IMG_0017.JPG" width="240" height="160"></a>
+                            <div class="title"><a href="#">视频标题12</a></div>
                             <div class="click"><span>点击量：<em>88888</em></span></div>
                         </li>
                     </ul>
@@ -115,8 +135,9 @@
             </div>
         </div>
         <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/rolling_left_right.js"></script>
         <script>
-        
+            Rolling.rollingRight();
         </script>
     </body>
 </html>
