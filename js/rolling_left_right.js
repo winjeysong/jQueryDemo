@@ -34,6 +34,18 @@ var Rolling = {
         .siblings().removeClass("cur_page")  //移除同辈样式
     },
 
+      //圆点功能：点击圆点切换版面
+    dotRolling: function(){
+        $("div.tip > span").click(function(){
+            let dotIndex = $(this).index();  //获取所点击的圆点的索引值
+            
+            if(! $innerContent.is(":animated")){
+                $innerContent.animate({left: - rollingWidth * dotIndex});  //控制innercontent的位置
+                Rolling.curDot(dotIndex + 1);  //点击后，当前版面的圆点提示
+            }
+        });
+    },
+
     //左右箭头功能：点击后展示下一版面或上一版面
     rollingRightLeft: function(){
         let cur = 1;  //初始化当前页数     
@@ -45,7 +57,7 @@ var Rolling = {
                     $innerContent.animate({
                         opacity: 0,
                         left: 0}, 0)
-                        .animate({opacity:1},"normal");
+                        .animate({opacity: 1},"normal");
                     cur = 1;
                 }
                 else{
@@ -64,8 +76,8 @@ var Rolling = {
                 if(cur == 1){  //如果当前是第一个版面，则点击后重新跳转到最后一个版面
                     $innerContent.animate({
                         opacity: 0,
-                        left: -rollingWidth * (totalPage - 1)}, 0)
-                        .animate({opacity:1},"normal");
+                        left: - rollingWidth * (totalPage - 1)}, 0)
+                        .animate({opacity: 1},"normal");
                     cur = totalPage;
                 }
                 else{
@@ -77,5 +89,5 @@ var Rolling = {
                 Rolling.curDot(cur);  //当前版面的圆点提示
             }
         });                            
-    }
+    },
 }
