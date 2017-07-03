@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>左右选框</title>
+        <meta charset="utf-8">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            div.wrap {
+                width: 120px;
+                display: inline-block;
+                position: relative;
+                left: 40%;
+                top: 50px;
+            }
+
+            div.wrap select {
+                width: 100px;
+                height: 150px;
+                
+            }
+            div.box {
+                width: 100px;
+            }
+
+            div.box span {
+                display: block;
+                text-align: center;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <select multiple id="select1">
+                <option value="1">option1</option>
+                <option value="2">option2</option>
+                <option value="3">option3</option>
+                <option value="4">option4</option>
+                <option value="5">option5</option>
+                <option value="6">option6</option>
+            </select>
+
+            <div class="box">
+                <span id="add_right">选到右侧</span>
+                <span id="add_right_all">全选到右侧</span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <select multiple id="select2"></select>
+
+            <div class="box">
+                <span id="add_left">选到左侧</span>
+                <span id="add_left_all">全选到左侧</span>
+            </div>
+        </div>
+
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/select_left_right.js"></script>
+        <script>
+            jQuery(function($){
+                $(function(){
+                    //点击按钮，左侧添加到右侧
+                    SelectOption.appendToOtherSide("#add_right", "#select1", "#select2");
+                    //点击按钮，右侧添加到左侧
+                    SelectOption.appendToOtherSide("#add_left", "#select2", "#select1");
+                    //点击按钮，左侧全部添加到右侧
+                    SelectOption.appendAllToOtherSide("#add_right_all", "#select1", "#select2");
+                    //点击按钮，右侧全部添加到左侧
+                    SelectOption.appendAllToOtherSide("#add_left_all", "#select2", "#select1");
+                    //双击选项，左侧添加到右侧
+                    SelectOption.dblclickToOtherSide("#select1", "#select2");
+                    //双击选项，右侧添加到左侧
+                    SelectOption.dblclickToOtherSide("#select2", "#select1");
+                });
+            });
+        </script>
+    </body>
+</html>
