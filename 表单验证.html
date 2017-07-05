@@ -1,28 +1,102 @@
+<!--一个简单的表单验证demo-->
 <!DOCTYPE HTML>
 <html>
     <head>
         <title>表单验证</title>
         <meta charset="utf-8">
         <style>
-        
+            div.in label{
+                display: inline-block;
+                text-align: right;
+                width: 100px;
+                line-height: 30px;
+            }
+
+             div.in, div.sub {
+                text-align: center; 
+            }
+
+            span.asterisk, span.blank {
+                display: inline-block;
+                width: 15px;
+                color: orangered;
+            }
         </style>
     </head>
 
     <body>
-         <form action="" method="POST">
-            <div>
-                <label for="usrname">用户名</label>
-                <input type="text" id="usrname" required="required">
-            </div>
-            <div>
-                <label for="passwd">密码</label>
-                <input type="password" id="passwd" required="required">
-            </div>
-            <div>
-                <label for="email">电子邮箱</label>
-                <input type="text" id="usrname" required="required">
-            </div>
-            
-         </form>
+        <form action="" method="POST">
+        <div class="in">
+            <label for="usrname">用户名</label>
+            <input type="text" id="usrname" required="required">
+        </div>
+        <div class="in">
+            <label for="passwd">密码</label>
+            <input type="password" id="passwd" required="required">
+        </div>
+        <div class="in">
+            <label for="email">电子邮箱</label>
+            <input type="text" id="email" required="required">
+        </div>
+        <div class="in">
+            <label for="sig">个性签名</label>
+            <input type="text" id="sig">
+        </div>
+        
+        <div class="sub">
+            <input type="submit" value="提交" id="submit">
+            <input type="reset" id="reset">
+        </div>
+        </form>
+
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> 
+        <script>
+            jQuery(function($){
+                $(function(){
+                    //为必填项添加“*”号
+                    $("div.in input").each(function(){
+                        if(typeof ($(this).attr("required")) == "undefined"){
+                            let blank = "<span class='blank'>&nbsp;&nbsp;</span>";
+                            $(this).after(blank);
+                        }
+                        else{
+                            let asterisk = "<span class='asterisk'>*</span>";
+                            $(this).after(asterisk);
+                        }
+                    });
+
+                    //当文本框失去焦点，判断填入内容是否符合要求
+                    $("div.in input").blur(function(){
+                        //判断用户名：字符数必须不小于4不大于10，前三个字符必须为字母，不允许出现“-”、“_”以外的符号
+                        if($(this).is("#usrname")){
+                            if(this.value.length < 4 || !/(^[a-zA-Z]{3})([a-zA-Z0-9-_]+$)/.test(this.value) || this.value.length > 10){
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'>用户名字符数应在4-10之间，前三个字符必须为字母，不允许“-”，“_”以外的符号</span>";
+                                $(this).parent().append(warning);
+                            }
+                            else{
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'><img src='pic/right.png' width='15' height='15'/></span>";
+                                $(this).parent().append(warning);
+                            }
+                        }
+
+                        //判断密码：不少于6位，可以包含字母数字及符号“.”“,”“-”“_”，且必须包含字母、数字、符号
+                        if($(this).is("#passwd")){
+                            if(this.value.length < 6 || !/[a-zA-Z]+?[0-9]+?[-_.,]+?/.test(this.value)){
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'>密码不能少于6位，必须包含数字、字母和符号，不允许“-”，“_”，“.”，“,”以外的符号</span>";
+                                $(this).parent().append(warning);
+                            }
+                            else{
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'><img src='pic/right.png' width='15' height='15'/></span>";
+                                $(this).parent().append(warning);
+                            }
+                        }
+                    });
+                });
+            });
+        </script>        
     </body>
 </html>
