@@ -81,17 +81,24 @@
                             }
                         }
 
-                        //判断密码：不少于6位，可以包含字母数字及符号“.”“,”“-”“_”，且必须包含字母、数字、符号
+                        //判断密码：不少于6位，有且仅有字母数字及符号“.”“,”“-”“_”，且他们需要同时存在
                         if($(this).is("#passwd")){
-                            if(this.value.length < 6 || !/[a-zA-Z]+?[0-9]+?[-_.,]+?/.test(this.value)){
+                            if(this.value.length < 6 || !/^(?=.*[a-zA-Z]+?)(?=.*[0-9]+?)(?=.*[-_\.\,]+?)[a-zA-Z0-9-_\.\,]+?$/.test(this.value)){
                                 $(this).parent().find("span.tip").remove()  //删除之前的提示
-                                let warning = "<span class='tip'>密码不能少于6位，必须包含数字、字母和符号，不允许“-”，“_”，“.”，“,”以外的符号</span>";
+                                let warning = "<span class='tip'>密码不能少于6位，同时含有且仅含有数字、字母和符号，不允许“-”，“_”，“.”，“,”以外的符号</span>";
                                 $(this).parent().append(warning);
                             }
                             else{
                                 $(this).parent().find("span.tip").remove()  //删除之前的提示
                                 let warning = "<span class='tip'><img src='pic/right.png' width='15' height='15'/></span>";
                                 $(this).parent().append(warning);
+                            }
+                        }
+
+                        //判断邮箱：xxxxx(字母数字-_)@xxx(字母数字).com
+                        if($(this).is("#email")){
+                            if(!/(\w-+?)@([a-zA-Z0-9]+?)(\.com)$/.test(this.value)){
+
                             }
                         }
                     });
