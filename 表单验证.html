@@ -5,6 +5,12 @@
         <title>表单验证</title>
         <meta charset="utf-8">
         <style>
+            form {
+                display: block;
+                width: 1200px;
+                margin: 10px auto;
+            }
+           
             div.in label{
                 display: inline-block;
                 text-align: right;
@@ -13,13 +19,26 @@
             }
 
              div.in, div.sub {
-                text-align: center; 
+                width: 70%;
+                margin: 10px auto;
+            }
+
+            div.sub {
+                position: relative;
+                left: 100px;
             }
 
             span.asterisk, span.blank {
                 display: inline-block;
                 width: 15px;
                 color: orangered;
+            }
+
+            span.tip {
+                font-size: 8px;
+                display: inline-block;
+                width: 550px;
+                text-align: left;
             }
         </style>
     </head>
@@ -56,7 +75,7 @@
                     //为必填项添加“*”号
                     $("div.in input").each(function(){
                         if(typeof ($(this).attr("required")) == "undefined"){
-                            let blank = "<span class='blank'>&nbsp;&nbsp;</span>";
+                            let blank = "<span class='blank'>&nbsp;</span>";
                             $(this).after(blank);
                         }
                         else{
@@ -97,8 +116,15 @@
 
                         //判断邮箱：xxxxx(字母数字-_)@xxx(字母数字).com
                         if($(this).is("#email")){
-                            if(!/(\w-+?)@([a-zA-Z0-9]+?)(\.com)$/.test(this.value)){
-
+                            if(!/^[A-Za-z0-9]+([-_][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z0-9]{2,5}$/.test(this.value)){
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'>邮箱格式错误</span>";
+                                $(this).parent().append(warning);
+                            }
+                            else{
+                                $(this).parent().find("span.tip").remove()  //删除之前的提示
+                                let warning = "<span class='tip'><img src='pic/right.png' width='15' height='15'/></span>";
+                                $(this).parent().append(warning);
                             }
                         }
                     });
