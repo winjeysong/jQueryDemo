@@ -127,23 +127,22 @@
                                 $(this).parent().append(warning);
                             }
                         }
+                    })
+                    .keyup(function(){
+                        $(this).triggerHandler("blur");  //松开按键时触发实时验证
+                    })
+                    .focus(function(){
+                        $(this).triggerHandler("blur");  //得到焦点时触发实时验证
+                    });
 
-                        //防止用户无视错误强行提交
-                        
-                            var errorNum = $("div.in .error").length;
-                            var i = 0;
-                            $("#submit").click(function(){
-                                $("input[required='required']").trigger('blur');
-                                if(errorNum > 0){  //如果有error类存在，则说明填写有误，阻止表单提交，用return false。
-                                    return false;
-                                }
-                            });
-                            i += 1;
-                            if(errorNum == 0 && i==2){
-                                alert("注册成功！");
-                            }
-                        
-                        
+                    //防止用户无视错误强行提交（出错的地方：之前把这个提交判断放到上面“失去焦点”的函数内了，导致每遍历一次都会产生一个alert）
+                    $("#submit").click(function(){
+                        $("input[required='required']").trigger('blur');
+                        var errorNum = $("div.in .error").length;
+                        if(errorNum > 0){  //如果有error类存在，则说明填写有误，阻止表单提交，用return false。
+                            return false;
+                        }
+                        alert("注册成功！");    
                     });
                 });
             });
