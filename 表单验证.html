@@ -90,7 +90,7 @@
                         if($(this).is("#usrname")){
                             if(this.value.length < 4 || !/(^[a-zA-Z]{3})([a-zA-Z0-9-_]+$)/.test(this.value) || this.value.length > 10){
                                 $(this).parent().find("span.tip").remove()  //删除之前的提示
-                                let warning = "<span class='tip'>用户名字符数应在4-10之间，前三个字符必须为字母，不允许“-”，“_”以外的符号</span>";
+                                let warning = "<span class='tip error'>用户名字符数应在4-10之间，前三个字符必须为字母，不允许“-”，“_”以外的符号</span>";
                                 $(this).parent().append(warning);
                             }
                             else{
@@ -104,7 +104,7 @@
                         if($(this).is("#passwd")){
                             if(this.value.length < 6 || !/^(?=.*[a-zA-Z]+?)(?=.*[0-9]+?)(?=.*[-_\.\,]+?)[a-zA-Z0-9-_\.\,]+?$/.test(this.value)){
                                 $(this).parent().find("span.tip").remove()  //删除之前的提示
-                                let warning = "<span class='tip'>密码不能少于6位，同时含有且仅含有数字、字母和符号，不允许“-”，“_”，“.”，“,”以外的符号</span>";
+                                let warning = "<span class='tip error'>密码不能少于6位，同时含有且仅含有数字、字母和符号，不允许“-”，“_”，“.”，“,”以外的符号</span>";
                                 $(this).parent().append(warning);
                             }
                             else{
@@ -118,7 +118,7 @@
                         if($(this).is("#email")){
                             if(!/^[A-Za-z0-9]+([-_][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z0-9]{2,5}$/.test(this.value)){
                                 $(this).parent().find("span.tip").remove()  //删除之前的提示
-                                let warning = "<span class='tip'>邮箱格式错误</span>";
+                                let warning = "<span class='tip error'>邮箱格式错误</span>";
                                 $(this).parent().append(warning);
                             }
                             else{
@@ -127,6 +127,23 @@
                                 $(this).parent().append(warning);
                             }
                         }
+
+                        //防止用户无视错误强行提交
+                        
+                            var errorNum = $("div.in .error").length;
+                            var i = 0;
+                            $("#submit").click(function(){
+                                $("input[required='required']").trigger('blur');
+                                if(errorNum > 0){  //如果有error类存在，则说明填写有误，阻止表单提交，用return false。
+                                    return false;
+                                }
+                            });
+                            i += 1;
+                            if(errorNum == 0 && i==2){
+                                alert("注册成功！");
+                            }
+                        
+                        
                     });
                 });
             });
