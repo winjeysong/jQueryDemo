@@ -1,0 +1,111 @@
+<!--根据用户输入筛选表格内容，沿用展开关闭的表格内容和样式-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表格内容筛选</title>
+        <style>
+            #filter {
+                margin: 10px 0;
+            }
+
+            table {
+                width: 350px;
+                border: 2px solid #000;
+            }
+
+            thead {
+                font-size: 18px;
+            }
+
+            tr.outer {
+                background-color: #eee;
+                font-weight: 700;
+                height: 2em;
+                text-indent: 2em;
+            }
+
+            tr.inner {
+                text-align: center;
+            }
+        
+        </style>
+    </head>
+
+    <body>
+        <label for="filter">筛选</label>
+        <input type="text" id="filter" />
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="outer" id="row1"><td colspan="3"><span class="symbol">-</span>&nbsp;一年级组</td></tr>
+                <tr class="inner inner_row1">
+                    <td>张一一</td>
+                    <td>男</td>
+                    <td>18</td>
+                </tr>
+                <tr class="inner inner_row1">
+                    <td>王二二</td>
+                    <td>女</td>
+                    <td>17</td>
+                </tr>
+                <tr class="inner inner_row1">
+                    <td>李三三</td>
+                    <td>男</td>
+                    <td>17</td>
+                </tr>
+
+                <tr class="outer" id="row2"><td colspan="3"><span class="symbol">-</span>&nbsp;二年级组</td></tr>
+                <tr class="inner inner_row2">
+                    <td>张甲</td>
+                    <td>男</td>
+                    <td>19</td>
+                </tr>
+                <tr class="inner inner_row2">
+                    <td>王乙</td>
+                    <td>女</td>
+                    <td>19</td>
+                </tr>
+                <tr class="inner inner_row2">
+                    <td>李丙</td>
+                    <td>男</td>
+                    <td>18</td>
+                </tr>
+
+                <tr class="outer" id="row3"><td colspan="3"><span class="symbol">-</span>&nbsp;三年级组</td></tr>
+                <tr class="inner inner_row3">
+                    <td>张大</td>
+                    <td>男</td>
+                    <td>21</td>
+                </tr>
+                <tr class="inner inner_row3">
+                    <td>王小</td>
+                    <td>女</td>
+                    <td>20</td>
+                </tr>
+                <tr class="inner inner_row3">
+                    <td>李中</td>
+                    <td>男</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            jQuery(function($){
+                $(function(){
+                    $("#filter").keyup(function(){
+                        $("tbody tr.inner").hide()  //隐藏
+                        .filter(":contains('" + $(this).val() + "')").show()  //筛选并显示
+                    }).keyup();
+                });
+            });
+        </script>
+    </body>
+</html>
