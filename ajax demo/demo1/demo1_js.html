@@ -1,0 +1,44 @@
+<!--重新学习一次ajax-->
+<!--demo来自《锋利的jQuery》-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>demo1</title>
+        <style>
+        </style>
+    </head>
+
+    <body>
+        <input type="button" value="submit" onclick="ajax();"/>
+        <div id="re"></div>
+
+        <script>
+            function ajax(){
+                var xhr = null;
+
+                if(window.ActiveXObject){  //IE5,IE6
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                else if(window.XMLHttpRequest){  //除IE5,IE6
+                    xhr = new XMLHttpRequest();
+                }
+
+                xhr.open("GET", "test.php", true);
+                xhr.onreadystatechange = RequestCallback;
+                xhr.send(null);  //由于是GET方法提交，所以send可以为null
+
+                function RequestCallback(){  //一旦readyState值改变，将会调用该函数
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            document.getElementById("re").innerHTML = xhr.responseText;
+                        }
+                    }
+                }
+            }
+
+
+        </script>
+    </body>
+</html>
