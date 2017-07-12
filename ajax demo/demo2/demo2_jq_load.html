@@ -1,0 +1,39 @@
+<!--重新学习一次ajax-->
+<!--demo来自《锋利的jQuery》-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>demo2</title>
+        <style>
+            #re, #re_noname {
+                border: 1px solid #fa8072;
+                width: 150px;
+                height: 250px;
+                margin: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <input type="button" id="submit1" value="ajax submit1">
+        <input type="button" id="submit2" value="ajax submit2">
+        <div class="comment">评论：</div>
+        <div id="re"></div>
+        <div id="re_noname"></div>
+    </body>
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+           $(function(){
+               $("#submit1").click(function(){
+                   $("#re").load("demo2_test.html");
+               });
+
+               $("#submit2").click(function(){
+                   $("#re_noname").load("demo2_test.html .comm");
+               });
+           });
+        </script>
+    </body>
+</html>
