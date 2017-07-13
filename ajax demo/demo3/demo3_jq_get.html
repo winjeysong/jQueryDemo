@@ -1,0 +1,61 @@
+<!--重新学习一次ajax-->
+<!--demo来自《锋利的jQuery》-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>demo3</title>
+        <style>
+            span.label {
+                display: inline-block;
+                width: 50px;
+                text-align: right;
+                
+            }
+
+            #usrname {
+                width: 136px;
+            }
+
+            #re {
+                display: inline-block;
+                border: 1px solid #fa8072;
+                width: 150px;
+                height: 250px;
+                margin-top: 10px;
+                overflow-y: scroll;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form action="" id="demo3">
+            <p><span class="label">用户：</span><input type="text" id="usrname"></p>
+            <p><span class="label">内容：</span><textarea id="content" rows="2" cols="20"></textarea></p>
+            <input type="button" id="submit" value="ajax submit" />
+            <div><span class="label">评论：</span><div id="re"></div></div>
+        </form>
+    
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+           $(function(){
+               $("#submit").click(function(){
+                   let data = {  //需要获取的用户和内容作为data参数，传递给后台
+                       usrname: $("#usrname").val(),
+                       content: $("#content").val()
+                   }
+
+                   function callBack(d, textStatus){  //回调函数，当服务端成功接收到数据，即textStatus返回success时，就可以通过回调函数返回数据d到页面上，例如进行处理后，返回json格式的数据
+                       let usrname = d.usrname;
+                       let content = d.content;
+                       let re = "<div><p>" + usrname +":</p><p class='comm'>" + content +"</p></div>";
+                       $("#re").append(re);
+                   }
+
+                   $.get("get3.php", data, callBack, "json");  //注意每个参数的作用
+               });
+           });
+        </script>
+    </body>
+</html>
