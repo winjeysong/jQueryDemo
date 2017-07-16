@@ -6,6 +6,35 @@
 
         <link href="" rel="stylesheet" type="text/css" />
         <style>
+            div.outer {
+                height: 600px;
+                width: 70%;
+                margin: 10px auto;
+                border: 1px solid #ddd;
+            }
+
+            #msgbox {
+                height: 490px;
+                width: 96%;
+                margin: 5px auto;
+                border: 1px solid #444;
+            }
+
+            span.loading {
+                height: 20px;
+                line-height: 18px;
+            }
+
+            #chatbox {
+                width: 96%;
+                margin: 10px auto;
+                text-align: right;
+            }
+
+            #subbtn {
+                margin: 4px;
+                width: 50px;
+            }
         </style>
     </head>
 
@@ -17,12 +46,13 @@
 
             <form action="" id="chatbox">
                 <label for="usrname">昵称</label>
-                <input type="text" id="usrname"/>
+                <input type="text" id="usrname" size="50"/>
                 <br />
                 <label for="msg">消息</label>
-                <input type="text" id="msg"/>
+                <input type="text" id="msg" size="50"/>
+                <br />
+                <input type="submit" id="subbtn" value="发送" />
             </form>
-
         </div>
         
         <script src=""></script>
