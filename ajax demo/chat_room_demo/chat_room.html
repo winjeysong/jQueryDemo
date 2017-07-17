@@ -55,8 +55,32 @@
             </form>
         </div>
         
-        <script src=""></script>
+        <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>
+        jQuery(function($){
+            $(function(){
+                var timstamp = 0;
+                updateMsg();
+
+                $("#chatbox").submit(function(){  //给表单添加submit事件
+                    let data = {
+                        usrname: $("#usrname").val(),
+                        msg: $("#msg").val(),
+                        time: timestamp,
+
+                    }
+
+                    function jsonFn(){
+                        $("#msg").val("");  //清空内容
+                        showMsg();
+                    }
+
+                    $.post(("backend.php"), data, xmlFn);  //发送post请求
+
+                    return false;  //阻止表单提交
+                });
+            });
+        });
         </script>
     </body>
 </html>
